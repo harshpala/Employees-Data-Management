@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../blocProvider/datePickerBloc.dart';
 
+// ignore: must_be_immutable
 class GridViewB extends StatelessWidget {
   var picked;
 
@@ -24,8 +25,6 @@ class GridViewB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-        GlobalKey<ScaffoldMessengerState>();
     return GridView.count(
       childAspectRatio: 3,
       shrinkWrap: true,

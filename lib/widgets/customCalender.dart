@@ -20,7 +20,6 @@ import 'package:flutter/src/material/ink_well.dart';
 import 'package:flutter/src/material/material_localizations.dart';
 import 'package:flutter/src/material/text_theme.dart';
 import 'package:flutter/src/material/theme.dart';
-import 'package:intl/intl.dart' as intl;
 
 const Duration _monthScrollDuration = Duration(milliseconds: 200);
 
@@ -59,7 +58,7 @@ const double _monthNavButtonsWidth = 108.0;
 ///    time picker.
 ///
 class CustomCalender extends StatefulWidget {
-  var isNoDate;
+  final isNoDate;
 
   /// Creates a calendar date picker.
   ///
@@ -99,15 +98,10 @@ class CustomCalender extends StatefulWidget {
     this.onDisplayedMonthChanged,
     this.initialCalendarMode = DatePickerMode.day,
     this.selectableDayPredicate,
-  })  : assert(initialDate != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        initialDate = DateUtils.dateOnly(initialDate),
+  })  : initialDate = DateUtils.dateOnly(initialDate),
         firstDate = DateUtils.dateOnly(firstDate),
         lastDate = DateUtils.dateOnly(lastDate),
-        currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
-        assert(onDateChanged != null),
-        assert(initialCalendarMode != null) {
+        currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()) {
     assert(
       !this.lastDate.isBefore(this.firstDate),
       'lastDate ${this.lastDate} must be on or after firstDate ${this.firstDate}.',
@@ -386,9 +380,7 @@ class _DatePickerModeToggleButtonState
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final TextTheme textTheme = Theme.of(context).textTheme;
-    final Color controlColor = colorScheme.onSurface.withOpacity(0.60);
 
     return Container(
       //padding: const EdgeInsetsDirectional.only(start: 16, end: 4),
@@ -433,7 +425,7 @@ class _DatePickerModeToggleButtonState
 }
 
 class _MonthPicker extends StatefulWidget {
-  var isNoDate;
+  final isNoDate;
 
   /// Creates a month picker.
   _MonthPicker({
@@ -448,12 +440,7 @@ class _MonthPicker extends StatefulWidget {
     required this.onChanged,
     required this.onDisplayedMonthChanged,
     this.selectableDayPredicate,
-  })  : assert(selectedDate != null),
-        assert(currentDate != null),
-        assert(onChanged != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
         assert(!selectedDate.isAfter(lastDate));
 
@@ -861,7 +848,7 @@ class _FocusedDate extends InheritedWidget {
 /// The days are arranged in a rectangular grid with one column for each day of
 /// the week.
 class _DayPicker extends StatefulWidget {
-  var isNoDate;
+  final isNoDate;
 
   /// Creates a day picker.
   _DayPicker({
@@ -874,13 +861,7 @@ class _DayPicker extends StatefulWidget {
     required this.selectedDate,
     required this.onChanged,
     this.selectableDayPredicate,
-  })  : assert(currentDate != null),
-        assert(displayedMonth != null),
-        assert(firstDate != null),
-        assert(lastDate != null),
-        assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         assert(!selectedDate.isBefore(firstDate)),
         assert(!selectedDate.isAfter(lastDate));
 
@@ -1188,11 +1169,7 @@ class YearPicker extends StatefulWidget {
     required this.selectedDate,
     required this.onChanged,
     this.dragStartBehavior = DragStartBehavior.start,
-  })  : assert(firstDate != null),
-        assert(lastDate != null),
-        assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+  })  : assert(!firstDate.isAfter(lastDate)),
         currentDate = DateUtils.dateOnly(currentDate ?? DateTime.now()),
         initialDate = DateUtils.dateOnly(initialDate ?? selectedDate);
 

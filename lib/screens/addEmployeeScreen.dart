@@ -8,12 +8,12 @@ import '../database/employee_database.dart';
 
 class AddEmployeeScreen extends StatefulWidget {
   final VoidCallback load;
-  var empId;
-  var name;
-  var role;
-  var initialDate;
-  var finalDate;
-  AddEmployeeScreen(
+  final empId;
+  final name;
+  final role;
+  final initialDate;
+  final finalDate;
+  const AddEmployeeScreen(
       {super.key,
       required this.load,
       this.empId,

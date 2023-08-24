@@ -5,10 +5,10 @@ import '../database/employee_database.dart';
 import 'addEmployeeScreen.dart';
 
 class EmployeeListScreen extends StatefulWidget {
-  var currentEmployees;
-  var previousEmployees;
-  var loadEmployees;
-  EmployeeListScreen({
+  final currentEmployees;
+  final previousEmployees;
+  final loadEmployees;
+  const EmployeeListScreen({
     super.key,
     required this.currentEmployees,
     required this.previousEmployees,
